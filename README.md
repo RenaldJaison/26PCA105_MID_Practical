@@ -1,2 +1,2 @@
-# 26PCA105_MID_Practical
+# 26PCA105_Practical
 MCA SEM-1 C++ MID Practical
