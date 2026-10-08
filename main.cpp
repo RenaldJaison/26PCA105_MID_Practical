@@ -1,45 +1,47 @@
 #include <iostream>
+#include <queue>
+#include <string>
 using namespace std;
 
-class Person {
-public:
+int main()
+{
+    queue<string> customers;
     string name;
-    int age;
 
-    void getPersonDetails() {
-        cout << "Enter name: ";
-        getline(cin, name);
+    cout << "Enter customer name: ";
+    getline(cin, name);
+    customers.push(name);
 
-        cout << "Enter age: ";
-        cin >> age;
-        cin.ignore();
-    }
-};
+    cout << "Enter another customer name: ";
+    getline(cin, name);
+    customers.push(name);
 
-class Superhero : public Person {
-public:
-    string superpower;
+    cout << "\nCustomers in queue:\n";
 
-    void getSuperheroDetails() {
-        cout << "Enter superpower: ";
-        getline(cin, superpower);
+    queue<string> temp = customers;
+
+    while (!temp.empty())
+    {
+        cout << temp.front() << endl;
+        temp.pop();
     }
 
-    void displaySuperheroDetails() {
-        cout << "Name: " << name << endl;
-        cout << "Age: " << age << endl;
-        cout << "Superpower: " << superpower << endl;
+    if (!customers.empty())
+    {
+        cout << "\nTaxi assigned to: " << customers.front() << endl;
+        customers.pop();
     }
-};
 
-int main() {
-    Superhero h;
+    cout << "\nRemaining customers:\n";
 
-    h.getPersonDetails();
-    h.getSuperheroDetails();
+    while (!customers.empty())
+    {
+        cout << customers.front() << endl;
+        customers.pop();
+    }
 
-    cout << "\nSuperhero Details:" << endl;
-    h.displaySuperheroDetails();
+    if (customers.empty())
+        cout << "Queue is empty." << endl;
 
     return 0;
 }
